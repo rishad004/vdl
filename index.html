@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GANG RULEBOOK — Respect First. Loyalty Forever.</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Roboto+Condensed:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0b0b0b;
+        --panel: #0f1113;
+        --accent: #b33;
+        --muted: #9a9a9a;
+        --paper: #141212;
+        --gold: #c9a24a;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Roboto Condensed", sans-serif;
+        background: radial-gradient(
+            1200px 600px at 10% 10%,
+            rgba(255, 255, 255, 0.02),
+            transparent 8%
+          ),
+          linear-gradient(180deg, #060606 0%, #0d0d0d 100%);
+        color: #eee;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        padding: 3rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 980px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.02),
+          rgba(0, 0, 0, 0.04)
+        );
+        border-radius: 18px;
+        padding: 28px;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7),
+          inset 0 1px 0 rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* decorative torn edge */
+      .card::before {
+        content: "";
+        position: absolute;
+        left: -120px;
+        top: -120px;
+        width: 420px;
+        height: 420px;
+        background: radial-gradient(
+            circle at 40% 40%,
+            rgba(255, 255, 255, 0.02),
+            transparent 40%
+          ),
+          conic-gradient(
+            from 180deg at 50% 50%,
+            rgba(0, 0, 0, 0.15),
+            transparent 30%
+          );
+        transform: rotate(-22deg);
+        opacity: 0.4;
+        pointer-events: none;
+      }
+
+      header {
+        display: flex;
+        gap: 18px;
+        align-items: center;
+        margin-bottom: 18px;
+      }
+      .logo {
+        width: 86px;
+        height: 86px;
+        border-radius: 12px;
+        background: linear-gradient(
+          135deg,
+          rgba(179, 51, 51, 0.12),
+          rgba(201, 162, 74, 0.06)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+        flex: 0 0 86px;
+      }
+      .logo svg {
+        filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.6));
+      }
+
+      h1 {
+        margin: 0;
+        font-family: "Cinzel", serif;
+        letter-spacing: 1px;
+        font-size: 28px;
+        line-height: 1.05;
+        text-transform: uppercase;
+      }
+      .subtitle {
+        color: var(--muted);
+        font-size: 13px;
+        margin-top: 4px;
+      }
+
+      .meta {
+        margin-left: auto;
+        text-align: right;
+      }
+      .meta .tag {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        font-size: 12px;
+      }
+
+      nav {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 18px;
+        flex-wrap: wrap;
+      }
+      .pill {
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.02),
+          rgba(0, 0, 0, 0.02)
+        );
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-size: 13px;
+        color: var(--muted);
+        border: 1px solid rgba(255, 255, 255, 0.02);
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 22px;
+      }
+      @media (max-width: 900px) {
+        main {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .section {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.01),
+          transparent
+        );
+        padding: 18px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.02);
+      }
+
+      .section h2 {
+        font-family: "Cinzel", serif;
+        margin: 0 0 8px 0;
+        font-size: 18px;
+        color: var(--gold);
+        letter-spacing: 0.6px;
+      }
+      .section p {
+        margin: 8px 0;
+        color: #d8d8d8;
+      }
+
+      .rules {
+        display: grid;
+        gap: 10px;
+      }
+      .rule {
+        padding: 12px;
+        background: rgba(0, 0, 0, 0.35);
+        border-radius: 8px;
+        border-left: 4px solid rgba(179, 51, 51, 0.55);
+      }
+      .rule .title {
+        font-weight: 700;
+        font-size: 14px;
+        text-transform: uppercase;
+      }
+      .rule .desc {
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 6px;
+      }
+
+      .sidebar {
+        position: relative;
+      }
+      .card-stamp {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: flex-start;
+        margin-bottom: 12px;
+      }
+      .stamp {
+        background: rgba(255, 255, 255, 0.02);
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        font-weight: 700;
+      }
+
+      .list {
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), transparent);
+        padding: 14px;
+        border-radius: 8px;
+        border: 1px dashed rgba(255, 255, 255, 0.03);
+      }
+      .list li {
+        padding: 6px 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      footer {
+        margin-top: 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .brand {
+        font-family: "Cinzel", serif;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .actions {
+        display: flex;
+        gap: 8px;
+      }
+      .btn {
+        padding: 8px 12px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        background: transparent;
+        cursor: pointer;
+        font-weight: 700;
+      }
+      .btn.primary {
+        background: var(--accent);
+        color: #fff;
+        border-color: rgba(179, 51, 51, 0.25);
+        box-shadow: 0 8px 20px rgba(179, 51, 51, 0.06);
+      }
+
+      /* subtle paper lines */
+      .paper-lines {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.03;
+        background-image: repeating-linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.02) 0 1px,
+          transparent 1px 38px
+        );
+        border-radius: 18px;
+      }
+
+      /* printable */
+      @media print {
+        body {
+          padding: 0;
+        }
+        .card {
+          box-shadow: none;
+          border-radius: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card" role="document" aria-label="Gang Rulebook">
+      <div class="paper-lines"></div>
+      <header>
+        <div class="logo" aria-hidden="true">
+          <!-- stylized outlaw badge -->
+          <svg
+            width="56"
+            height="56"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="0.5"
+              y="0.5"
+              width="23"
+              height="23"
+              rx="4"
+              stroke="rgba(255,255,255,0.06)"
+            />
+            <path
+              d="M12 4L14.2 9.6L20 10.5L15.6 14.2L16.8 20L12 17.2L7.2 20L8.4 14.2L4 10.5L9.8 9.6L12 4Z"
+              fill="rgba(179,51,51,0.9)"
+            />
+          </svg>
+        </div>
+        <div>
+          <h1>GANG RULEBOOK</h1>
+          <div class="subtitle">Respect First. Loyalty Forever.</div>
+        </div>
+        <div class="meta">
+          <div class="tag">CODE OF HONOR</div>
+          <div style="font-size: 12px; color: var(--muted); margin-top: 6px">
+            In-game crew handbook
+          </div>
+        </div>
+      </header>
+
+      <nav>
+        <div class="pill">Respect</div>
+        <div class="pill">Loyalty</div>
+        <div class="pill">Silence</div>
+        <div class="pill">No Toxicity</div>
+        <div class="pill">18+</div>
+      </nav>
+
+      <main>
+        <section class="section" aria-labelledby="code-of-honor">
+          <h2 id="code-of-honor">CODE OF HONOR</h2>
+          <div class="rules">
+            <div class="rule">
+              <div class="title">Respect First.</div>
+              <div class="desc">
+                Every member deserves respect—no ego, no trash talk. Disrespect
+                = warning or exile.
+              </div>
+            </div>
+            <div class="rule">
+              <div class="title">Brotherhood Above All.</div>
+              <div class="desc">
+                No betrayal, no secrets against your brothers or sisters. We
+                stand together.
+              </div>
+            </div>
+            <div class="rule">
+              <div class="title">Loyalty Over Everything.</div>
+              <div class="desc">
+                Once you ride with us, you stay loyal. No switching sides, no
+                double play.
+              </div>
+            </div>
+            <div class="rule">
+              <div class="title">Stay Silent. Stay Solid.</div>
+              <div class="desc">
+                Internal matters stay within the gang. Outsiders don't get our
+                stories.
+              </div>
+            </div>
+            <div class="rule">
+              <div class="title">Act Mature.</div>
+              <div class="desc">
+                Minimum age 18+. Handle yourself with class—no childish drama.
+              </div>
+            </div>
+          </div>
+
+          <hr
+            style="
+              margin: 14px 0;
+              border: none;
+              border-top: 1px dashed rgba(255, 255, 255, 0.03);
+            "
+          />
+
+          <h2 id="in-game-behavior">IN-GAME BEHAVIOR</h2>
+          <div class="rules" style="margin-top: 6px">
+            <div class="rule">
+              <div class="title">No Toxicity or Harassment.</div>
+              <div class="desc">No racism, sexism, or bullying—ever.</div>
+            </div>
+            <div class="rule">
+              <div class="title">Respect the Tag.</div>
+              <div class="desc">
+                Represent the gang name with pride. Never misuse it.
+              </div>
+            </div>
+            <div class="rule">
+              <div class="title">Active Participation.</div>
+              <div class="desc">
+                Be active in events, missions, and gang activities. Ghosts get
+                replaced.
+              </div>
+            </div>
+            <div class="rule">
+              <div class="title">Obey the Chain of Command.</div>
+              <div class="desc">
+                Follow your leader and co-boss. Every order has a reason.
+              </div>
+            </div>
+            <div class="rule">
+              <div class="title">Protect the Family.</div>
+              <div class="desc">
+                Defend your members in or out of the game. One stands, all
+                stand.
+              </div>
+            </div>
+          </div>
+
+          <hr
+            style="
+              margin: 14px 0;
+              border: none;
+              border-top: 1px dashed rgba(255, 255, 255, 0.03);
+            "
+          />
+
+          <h2 id="loyalty-trust">LOYALTY &amp; TRUST</h2>
+          <div class="rules" style="margin-top: 6px">
+            <div class="rule">
+              <div class="title">No Betrayal.</div>
+              <div class="desc">
+                Anyone caught leaking into, disrespecting members, or joining
+                rival crews = permanent ban.
+              </div>
+            </div>
+            <div class="rule">
+              <div class="title">Keep Secrets.</div>
+              <div class="desc">
+                What happens in the gang stays in the gang.
+              </div>
+            </div>
+            <div class="rule">
+              <div class="title">Be Reliable.</div>
+              <div class="desc">If you promise, you deliver. Word is bond.</div>
+            </div>
+          </div>
+        </section>
+
+        <aside class="sidebar">
+          <div class="card-stamp">
+            <div class="stamp">OUTLAW CODE</div>
+            <div style="color: var(--muted); font-size: 13px">
+              Edition • 1.0
+            </div>
+          </div>
+
+          <div class="section list" aria-labelledby="quick-rules">
+            <h2 id="quick-rules">Quick Rules</h2>
+            <ul style="margin: 12px 0 0 18px; padding: 0">
+              <li>Respect first — no exceptions.</li>
+              <li>18+ only, maturity required.</li>
+              <li>No public leaking of internal matters.</li>
+              <li>Stay active or risk replacement.</li>
+              <li>Obey leadership — trust the chain.</li>
+            </ul>
+          </div>
+
+          <div style="height: 16px"></div>
+
+          <div class="section" aria-labelledby="recruit">
+            <h2 id="recruit">Recruit &amp; Promotions</h2>
+            <p style="color: var(--muted); font-size: 14px">
+              New members require sponsorship. Promotions based on merit,
+              activity, and trustworthiness. Leadership decisions final.
+            </p>
+          </div>
+        </aside>
+      </main>
+
+      <footer>
+        <div class="brand">Respect First — Loyalty Forever</div>
+        <div class="actions">
+          <button class="btn" onclick="window.print()">Print</button>
+          <button class="btn primary" id="downloadBtn">Download HTML</button>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // download the current html as a single file
+      document
+        .getElementById("downloadBtn")
+        .addEventListener("click", function () {
+          const content = `<!doctype html>\n${document.documentElement.outerHTML}`;
+          const blob = new Blob([content], { type: "text/html" });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "gang-rulebook-outlaw.html";
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          URL.revokeObjectURL(url);
+        });
+    </script>
+  </body>
+</html>
