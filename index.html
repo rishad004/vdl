@@ -471,42 +471,12 @@
           </div>
 
           <div style="height: 16px"></div>
-
-          <div class="section" aria-labelledby="recruit">
-            <h2 id="recruit">Recruit &amp; Promotions</h2>
-            <p style="color: var(--muted); font-size: 14px">
-              New members require sponsorship. Promotions based on merit,
-              activity, and trustworthiness. Leadership decisions final.
-            </p>
-          </div>
         </aside>
       </main>
 
       <footer>
         <div class="brand">Respect First — Loyalty Forever</div>
-        <div class="actions">
-          <button class="btn" onclick="window.print()">Print</button>
-          <button class="btn primary" id="downloadBtn">Download HTML</button>
-        </div>
       </footer>
     </div>
-
-    <script>
-      // download the current html as a single file
-      document
-        .getElementById("downloadBtn")
-        .addEventListener("click", function () {
-          const content = `<!doctype html>\n${document.documentElement.outerHTML}`;
-          const blob = new Blob([content], { type: "text/html" });
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement("a");
-          a.href = url;
-          a.download = "gang-rulebook-outlaw.html";
-          document.body.appendChild(a);
-          a.click();
-          a.remove();
-          URL.revokeObjectURL(url);
-        });
-    </script>
   </body>
 </html>
